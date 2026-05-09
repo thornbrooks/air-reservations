@@ -1,0 +1,126 @@
+{% extends 'base.html' %}
+{% block title %}Hotels{% if destination %} in {{ destination }}{% endif %} — Air{% endblock %}
+
+{% block content %}
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
+
+    <div class="mb-8">
+        <h1 class="text-3xl font-bold text-gray-900">Find Hotels</h1>
+        <p class="text-gray-500 mt-1">Search properties worldwide</p>
+    </div>
+
+    <!-- Search form -->
+    <form method="GET" action="/hotels/" class="bg-gray-50 border border-gray-100 rounded-2xl p-5 mb-10">
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-3">
+            <div class="lg:col-span-2">
+                <label class="block text-xs font-medium text-gray-500 mb-1">Destination</label>
+                <input type="text" name="destination" value="{{ destination }}"
+                       placeholder="City or area (e.g. Paris, Dubai, New York)..."
+                       required
+                       class="w-full border border-gray-200 rounded-xl px-4 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-blue-400">
+            </div>
+            <div>
+                <label class="block text-xs font-medium text-gray-500 mb-1">Check-in</label>
+                <input type="date" name="check_in" value="{{ check_in }}"
+                       class="w-full border border-gray-200 rounded-xl px-4 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-blue-400">
+            </div>
+            <div>
+                <label class="block text-xs font-medium text-gray-500 mb-1">Check-out</label>
+                <input type="date" name="check_out" value="{{ check_out }}"
+                       class="w-full border border-gray-200 rounded-xl px-4 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-blue-400">
+            </div>
+            <div class="flex gap-2">
+                <div class="flex-1">
+                    <label class="block text-xs font-medium text-gray-500 mb-1">Adults</label>
+                    <select name="adults" class="w-full border border-gray-200 rounded-xl px-3 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-blue-400">
+                        {% for i in range(1, 7) %}
+                            <option value="{{ i }}" {% if adults == i %}selected{% endif %}>{{ i }}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+                <div class="flex items-end">
+                    <button type="submit" class="gradient-blue text-white font-semibold px-5 py-2.5 rounded-xl text-sm hover:opacity-90 transition-opacity whitespace-nowrap">
+                        Search
+                    </button>
+                </div>
+            </div>
+        </div>
+    </form>
+
+    {% if error %}
+    <div class="bg-red-50 border border-red-200 text-red-700 px-5 py-4 rounded-xl mb-6 text-sm">
+        <strong>Error:</strong> {{ error }}
+    </div>
+    {% endif %}
+
+    {% if hotels %}
+        <p class="text-gray-500 text-sm mb-5">
+            {{ hotels|length }} hotel{{ 's' if hotels|length != 1 else '' }} found in
+            <span class="font-semibold text-gray-700">{{ destination }}</span>
+        </p>
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+            {% for hotel in hotels %}
+            <a href="/hotels/{{ hotel.id }}?check_in={{ check_in }}&check_out={{ check_out }}&adults={{ adults }}"
+               class="group bg-white rounded-2xl border border-gray-100 shadow-sm hover:shadow-md transition-shadow overflow-hidden flex flex-col">
+
+                <!-- Photo -->
+                <div class="relative h-48 bg-gray-100 overflow-hidden">
+                    {% if hotel.photo %}
+                        <img src="{{ hotel.photo }}" alt="{{ hotel.name }}"
+                             class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                             onerror="this.parentElement.classList.add('flex','items-center','justify-center'); this.remove();">
+                    {% else %}
+                        <div class="w-full h-full flex items-center justify-center">
+                            <i data-lucide="building-2" class="w-10 h-10 text-gray-300"></i>
+                        </div>
+                    {% endif %}
+                    {% if hotel.price_level %}
+                    <div class="absolute top-3 right-3 bg-white/90 text-gray-700 text-xs font-bold px-2 py-1 rounded-lg">
+                        {{ hotel.price_level }}
+                    </div>
+                    {% endif %}
+                </div>
+
+                <!-- Info -->
+                <div class="p-4 flex flex-col flex-1">
+                    <h3 class="font-semibold text-gray-900 text-sm leading-snug mb-1 group-hover:text-blue-600 transition-colors line-clamp-2">
+                        {{ hotel.name }}
+                    </h3>
+                    <p class="text-gray-400 text-xs mb-3 line-clamp-1">{{ hotel.address }}</p>
+                    <div class="mt-auto flex items-center justify-between">
+                        {% if hotel.rating %}
+                        <div class="flex items-center gap-1">
+                            <i data-lucide="star" class="w-3.5 h-3.5 fill-yellow-400 text-yellow-400"></i>
+                            <span class="text-gray-700 text-sm font-semibold">{{ hotel.rating }}</span>
+                            {% if hotel.review_count %}
+                            <span class="text-gray-400 text-xs">({{ hotel.review_count }})</span>
+                            {% endif %}
+                        </div>
+                        {% else %}
+                        <span class="text-gray-300 text-xs">No reviews yet</span>
+                        {% endif %}
+                        <span class="text-blue-600 text-xs font-medium">View details →</span>
+                    </div>
+                </div>
+            </a>
+            {% endfor %}
+        </div>
+
+    {% elif destination and not error %}
+        <div class="text-center py-20 bg-gray-50 rounded-2xl border border-gray-100">
+            <i data-lucide="building-2" class="w-12 h-12 text-gray-300 mx-auto mb-4"></i>
+            <h2 class="text-xl font-semibold text-gray-700 mb-2">No hotels found</h2>
+            <p class="text-gray-400">Try a different city or broader search term.</p>
+        </div>
+
+    {% elif not destination %}
+        <div class="text-center py-24 bg-gray-50 rounded-2xl border border-gray-100">
+            <i data-lucide="building-2" class="w-16 h-16 text-gray-200 mx-auto mb-5"></i>
+            <h2 class="text-2xl font-bold text-gray-700 mb-3">Search hotels worldwide</h2>
+            <p class="text-gray-400 max-w-md mx-auto mb-2">Enter a destination to find hotels with real ratings and photos.</p>
+            <p class="text-gray-300 text-sm">Try: Paris, New York, Tokyo, London, Dubai</p>
+        </div>
+    {% endif %}
+
+</div>
+{% endblock %}

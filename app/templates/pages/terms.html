@@ -1,0 +1,84 @@
+{% extends 'base.html' %}
+{% block title %}Terms of Service — Air{% endblock %}
+
+{% block content %}
+<div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+
+    <div class="mb-10">
+        <h1 class="text-4xl font-bold text-gray-900 mb-3">Terms of Service</h1>
+        <p class="text-gray-500">Last updated: May 9, 2026</p>
+    </div>
+
+    <div class="prose prose-gray max-w-none space-y-8 text-gray-600 leading-relaxed">
+
+        <section>
+            <h2 class="text-xl font-bold text-gray-900 mb-3">1. Acceptance of Terms</h2>
+            <p>By accessing or using Air — AI Reservations ("Air", "we", "us", or "our"), you agree to be bound by these Terms of Service. If you do not agree to these terms, please do not use our platform.</p>
+        </section>
+
+        <section>
+            <h2 class="text-xl font-bold text-gray-900 mb-3">2. Description of Service</h2>
+            <p>Air is an online marketplace that connects guests with hosts offering homes, experiences, and events. Air also provides hotel search functionality powered by third-party data. Air acts as an intermediary and is not a party to any agreement between guests and hosts.</p>
+        </section>
+
+        <section>
+            <h2 class="text-xl font-bold text-gray-900 mb-3">3. User Accounts</h2>
+            <p>You must create an account to access most features of Air. You are responsible for maintaining the confidentiality of your account credentials and for all activity that occurs under your account. You must provide accurate and complete information when creating your account.</p>
+        </section>
+
+        <section>
+            <h2 class="text-xl font-bold text-gray-900 mb-3">4. Bookings and Payments</h2>
+            <p>When you make a booking through Air, you agree to pay a non-refundable service fee charged by Air. This service fee covers platform maintenance and customer support. Payment for the listing itself (nightly rate, experience fee, ticket price) is handled separately between you and the host.</p>
+            <p class="mt-3">All payments are processed securely through Stripe. Air does not store your payment card information.</p>
+        </section>
+
+        <section>
+            <h2 class="text-xl font-bold text-gray-900 mb-3">5. Host Responsibilities</h2>
+            <p>Hosts are solely responsible for the accuracy of their listings, including descriptions, pricing, availability, and images. Hosts must comply with all applicable local laws and regulations, including those related to short-term rentals, event hosting, and health and safety.</p>
+        </section>
+
+        <section>
+            <h2 class="text-xl font-bold text-gray-900 mb-3">6. Guest Responsibilities</h2>
+            <p>Guests must treat hosts' properties and experiences with respect. Any damage caused during a booking is the responsibility of the guest. Guests must comply with house rules set by the host and any applicable laws during their stay or attendance.</p>
+        </section>
+
+        <section>
+            <h2 class="text-xl font-bold text-gray-900 mb-3">7. Cancellations</h2>
+            <p>Cancellation policies vary by listing and are set by individual hosts. The Air service fee is non-refundable upon cancellation. Please review the cancellation policy of any listing before booking.</p>
+        </section>
+
+        <section>
+            <h2 class="text-xl font-bold text-gray-900 mb-3">8. Prohibited Activities</h2>
+            <p>You may not use Air to:</p>
+            <ul class="list-disc list-inside mt-2 space-y-1">
+                <li>Post false, misleading, or fraudulent listings</li>
+                <li>Harass, threaten, or harm other users</li>
+                <li>Violate any applicable laws or regulations</li>
+                <li>Circumvent or manipulate our fee structure</li>
+                <li>Use automated tools to scrape or access our platform</li>
+            </ul>
+        </section>
+
+        <section>
+            <h2 class="text-xl font-bold text-gray-900 mb-3">9. Limitation of Liability</h2>
+            <p>Air is not responsible for the conduct of hosts or guests. We do not guarantee the quality, safety, or legality of any listing. To the maximum extent permitted by law, Air's liability is limited to the service fee paid for the relevant transaction.</p>
+        </section>
+
+        <section>
+            <h2 class="text-xl font-bold text-gray-900 mb-3">10. Changes to Terms</h2>
+            <p>We may update these Terms of Service from time to time. Continued use of Air after any changes constitutes your acceptance of the new terms. We will notify registered users of significant changes via email.</p>
+        </section>
+
+        <section>
+            <h2 class="text-xl font-bold text-gray-900 mb-3">11. Contact</h2>
+            <p>If you have questions about these Terms of Service, please contact us at <a href="mailto:support@air-reservations.com" class="text-blue-600 hover:underline">support@air-reservations.com</a>.</p>
+        </section>
+
+    </div>
+
+    <div class="mt-12 pt-8 border-t border-gray-100 flex gap-4">
+        <a href="/privacy" class="text-blue-600 text-sm font-medium hover:underline">Privacy Policy</a>
+        <a href="/" class="text-gray-400 text-sm hover:text-gray-600">Back to Home</a>
+    </div>
+</div>
+{% endblock %}

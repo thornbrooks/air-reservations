@@ -1,0 +1,99 @@
+{% extends 'base.html' %}
+{% block title %}Privacy Policy — Air{% endblock %}
+
+{% block content %}
+<div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+
+    <div class="mb-10">
+        <h1 class="text-4xl font-bold text-gray-900 mb-3">Privacy Policy</h1>
+        <p class="text-gray-500">Last updated: May 9, 2026</p>
+    </div>
+
+    <div class="prose prose-gray max-w-none space-y-8 text-gray-600 leading-relaxed">
+
+        <section>
+            <h2 class="text-xl font-bold text-gray-900 mb-3">1. Information We Collect</h2>
+            <p>When you use Air, we collect the following types of information:</p>
+            <ul class="list-disc list-inside mt-2 space-y-1">
+                <li><strong>Account information:</strong> name, email address, phone number, and profile photo</li>
+                <li><strong>Listing information:</strong> property details, descriptions, images, and pricing provided by hosts</li>
+                <li><strong>Booking information:</strong> dates, guest counts, and booking history</li>
+                <li><strong>Payment information:</strong> processed securely by Stripe — we do not store card details</li>
+                <li><strong>Usage data:</strong> pages visited, search queries, and interactions with the platform</li>
+            </ul>
+        </section>
+
+        <section>
+            <h2 class="text-xl font-bold text-gray-900 mb-3">2. How We Use Your Information</h2>
+            <p>We use the information we collect to:</p>
+            <ul class="list-disc list-inside mt-2 space-y-1">
+                <li>Provide, operate, and improve the Air platform</li>
+                <li>Process bookings and payments</li>
+                <li>Send booking confirmations and service notifications</li>
+                <li>Respond to customer support requests</li>
+                <li>Detect and prevent fraud or abuse</li>
+                <li>Comply with legal obligations</li>
+            </ul>
+        </section>
+
+        <section>
+            <h2 class="text-xl font-bold text-gray-900 mb-3">3. Information Sharing</h2>
+            <p>We do not sell your personal information. We may share your information with:</p>
+            <ul class="list-disc list-inside mt-2 space-y-1">
+                <li><strong>Hosts:</strong> when you make a booking, we share your name and contact details with the host</li>
+                <li><strong>Guests:</strong> hosts' public listing information is visible to all users</li>
+                <li><strong>Service providers:</strong> Firebase (database), Stripe (payments), Google Places (hotel search) — each under their own privacy policies</li>
+                <li><strong>Law enforcement:</strong> when required by applicable law or legal process</li>
+            </ul>
+        </section>
+
+        <section>
+            <h2 class="text-xl font-bold text-gray-900 mb-3">4. Data Storage</h2>
+            <p>Your data is stored securely using Google Firebase, which employs industry-standard encryption at rest and in transit. Profile images and listing photos are stored in Firebase Storage. We retain your data for as long as your account is active or as needed to provide services.</p>
+        </section>
+
+        <section>
+            <h2 class="text-xl font-bold text-gray-900 mb-3">5. Cookies</h2>
+            <p>Air uses session cookies to keep you logged in and to maintain your preferences. We do not use third-party advertising cookies. You can disable cookies in your browser settings, but this may affect platform functionality.</p>
+        </section>
+
+        <section>
+            <h2 class="text-xl font-bold text-gray-900 mb-3">6. Your Rights</h2>
+            <p>You have the right to:</p>
+            <ul class="list-disc list-inside mt-2 space-y-1">
+                <li>Access the personal information we hold about you</li>
+                <li>Correct inaccurate information via your profile settings</li>
+                <li>Request deletion of your account and associated data</li>
+                <li>Withdraw consent for non-essential data processing</li>
+            </ul>
+            <p class="mt-3">To exercise any of these rights, contact us at <a href="mailto:privacy@air-reservations.com" class="text-blue-600 hover:underline">privacy@air-reservations.com</a>.</p>
+        </section>
+
+        <section>
+            <h2 class="text-xl font-bold text-gray-900 mb-3">7. Children's Privacy</h2>
+            <p>Air is not intended for users under the age of 18. We do not knowingly collect personal information from children. If we become aware that a child has provided us with personal information, we will delete it immediately.</p>
+        </section>
+
+        <section>
+            <h2 class="text-xl font-bold text-gray-900 mb-3">8. Third-Party Links</h2>
+            <p>Our platform may contain links to third-party websites, including hotel booking sites. We are not responsible for the privacy practices of those sites and encourage you to review their privacy policies.</p>
+        </section>
+
+        <section>
+            <h2 class="text-xl font-bold text-gray-900 mb-3">9. Changes to This Policy</h2>
+            <p>We may update this Privacy Policy from time to time. We will notify you of significant changes by posting a notice on our platform or sending an email to your registered address.</p>
+        </section>
+
+        <section>
+            <h2 class="text-xl font-bold text-gray-900 mb-3">10. Contact Us</h2>
+            <p>If you have any questions about this Privacy Policy, please contact us at <a href="mailto:privacy@air-reservations.com" class="text-blue-600 hover:underline">privacy@air-reservations.com</a>.</p>
+        </section>
+
+    </div>
+
+    <div class="mt-12 pt-8 border-t border-gray-100 flex gap-4">
+        <a href="/terms" class="text-blue-600 text-sm font-medium hover:underline">Terms of Service</a>
+        <a href="/" class="text-gray-400 text-sm hover:text-gray-600">Back to Home</a>
+    </div>
+</div>
+{% endblock %}
