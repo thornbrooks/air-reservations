@@ -6,39 +6,86 @@
     <title>{% block title %}Air — AI Reservations{% endblock %}</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        /* ============================================================
+           STAYS brand system (yellow + white, Airbnb pattern)
+           Re-skin: the legacy "blue" accent palette is remapped to the
+           Stays amber ramp, so every blue-* class across the app picks
+           up the new brand automatically.
+           ============================================================ */
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['"Plus Jakarta Sans"', 'system-ui', 'sans-serif'],
+                    },
+                    colors: {
+                        blue: {
+                            50:  '#FFF8E7',
+                            100: '#FFEAC0',
+                            200: '#FCDD8E',
+                            300: '#F4C75B',
+                            400: '#E8A317',
+                            500: '#C77F00',
+                            600: '#A8690A',
+                            700: '#8A5600',
+                            800: '#6B4300',
+                            900: '#4A2E00',
+                        },
+                        primary:        '#FFB400',
+                        'primary-dark': '#E89400',
+                        ink:    '#222222',
+                        muted:  '#717171',
+                        line:   '#DDDDDD',
+                        soft:   '#F7F7F7',
+                        success:'#2E7D32',
+                    },
+                    borderRadius: { card: '12px', xl2: '16px' },
+                    boxShadow: {
+                        card:  '0 1px 2px rgba(0,0,0,.05)',
+                        soft:  '0 6px 16px rgba(0,0,0,.10)',
+                        float: '0 8px 28px rgba(0,0,0,.12)',
+                    },
+                },
+            },
+        };
+    </script>
     <script src="https://unpkg.com/lucide@latest"></script>
     <link rel="stylesheet" href="/static/css/style.css">
     <style>
-        * { font-family: 'Inter', sans-serif; }
+        * { font-family: 'Plus Jakarta Sans', system-ui, sans-serif; }
+        ::selection { background: #FFB400; color: #222; }
+        /* primary brand fill (formerly blue) — yellow gradient, white text */
         .gradient-blue {
-            background: linear-gradient(135deg, #0052cc 0%, #0099e6 100%);
+            background: linear-gradient(135deg, #FFB400 0%, #E07F00 100%);
         }
         .gradient-text {
-            background: linear-gradient(135deg, #0052cc 0%, #0099e6 100%);
+            background: linear-gradient(135deg, #E89400 0%, #B26A00 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
         }
         .card-hover {
-            transition: transform 0.22s ease, box-shadow 0.22s ease;
+            transition: transform 0.18s ease, box-shadow 0.18s ease;
         }
         .card-hover:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 24px 48px rgba(0, 82, 204, 0.12);
+            transform: translateY(-4px);
+            box-shadow: 0 6px 16px rgba(0, 0, 0, 0.10);
         }
         .glass {
-            background: rgba(255,255,255,0.18);
+            background: rgba(255,255,255,0.16);
             backdrop-filter: blur(14px);
             -webkit-backdrop-filter: blur(14px);
-            border: 1px solid rgba(255,255,255,0.3);
+            border: 1px solid rgba(255,255,255,0.32);
         }
+        /* premium warm dark hero (formerly navy) */
         .hero-gradient {
-            background: linear-gradient(135deg, #0a1628 0%, #0052cc 50%, #0099e6 100%);
+            background: linear-gradient(135deg, #1c160c 0%, #4a3712 48%, #8a6300 100%);
         }
         .section-fade {
-            background: linear-gradient(180deg, #f8faff 0%, #ffffff 100%);
+            background: linear-gradient(180deg, #FFFDF6 0%, #ffffff 100%);
         }
         [data-flash] { animation: slideIn 0.3s ease; }
         @keyframes slideIn {

@@ -13,3 +13,4 @@ instance/
 *.egg-info/
 dist/
 build/
+.claude/
